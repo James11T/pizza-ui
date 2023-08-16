@@ -1,0 +1,259 @@
+{
+  "toppings": [
+    {
+      "id": "TOMATO_BASE",
+      "name": "Tomato Base",
+      "conflicts": ["BBQ_BASE"],
+      "category": "BASE",
+      "inStock": true
+    },
+    {
+      "id": "BBQ_BASE",
+      "name": "BBQ Base",
+      "conflicts": ["TOMATO_BASE"],
+      "category": "BASE",
+      "inStock": true
+    },
+    {
+      "id": "CHEDDAR",
+      "name": "Cheddar",
+      "conflicts": [],
+      "category": "CHEESE",
+      "inStock": true
+    },
+    {
+      "id": "GRATED_MOZZARELLA",
+      "name": "Grated Mozzarella",
+      "conflicts": [],
+      "category": "CHEESE",
+      "inStock": true
+    },
+    {
+      "id": "FRESH_MOZZARELLA",
+      "name": "Fresh Mozzarella",
+      "conflicts": [],
+      "category": "CHEESE",
+      "inStock": true
+    },
+    {
+      "id": "PEPERONI",
+      "name": "Peperoni",
+      "conflicts": [],
+      "category": "MEAT",
+      "inStock": true
+    },
+    {
+      "id": "CHORIZO",
+      "name": "Chorizo",
+      "conflicts": [],
+      "category": "MEAT",
+      "inStock": true
+    },
+    {
+      "id": "CHORIZO_CUBES",
+      "name": "Chorizo Cubes",
+      "conflicts": [],
+      "category": "MEAT",
+      "inStock": true
+    },
+    {
+      "id": "HAM",
+      "name": "Ham",
+      "conflicts": [],
+      "category": "MEAT",
+      "inStock": true
+    },
+    {
+      "id": "CHICKEN",
+      "name": "Chicken",
+      "conflicts": [],
+      "category": "MEAT",
+      "inStock": false
+    },
+    {
+      "id": "BACON",
+      "name": "Bacon",
+      "conflicts": [],
+      "category": "MEAT",
+      "inStock": true
+    },
+    {
+      "id": "BEEF",
+      "name": "Spicy Beef",
+      "conflicts": [],
+      "category": "MEAT",
+      "inStock": false
+    },
+    {
+      "id": "PEPPERS",
+      "name": "Peppers",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": true
+    },
+    {
+      "id": "CHILIES",
+      "name": "Chilies",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": true
+    },
+    {
+      "id": "ONIONS",
+      "name": "Red Onions",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": true
+    },
+    {
+      "id": "PINEAPPLE",
+      "name": "Pineapple",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": false
+    },
+    {
+      "id": "MUSHROOMS",
+      "name": "Mushrooms",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": false
+    },
+    {
+      "id": "GARLIC",
+      "name": "Fresh Garlic",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": true
+    },
+    {
+      "id": "BASIL",
+      "name": "Fresh Basil",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": true
+    },
+    {
+      "id": "CHERRY_TOMATOES",
+      "name": "Cherry Tomatoes",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": false
+    },
+    {
+      "id": "ROCKET",
+      "name": "Rocket",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": true
+    },
+    {
+      "id": "SRIRACHA",
+      "name": "Sriracha",
+      "conflicts": [],
+      "category": "SAUCE",
+      "inStock": false
+    },
+    {
+      "id": "SRIRACHA_MAYO",
+      "name": "Sriracha Mayo",
+      "conflicts": [],
+      "category": "SAUCE",
+      "inStock": true
+    },
+    {
+      "id": "BURGER_SAUCE",
+      "name": "Burger Sauce",
+      "conflicts": [],
+      "category": "SAUCE",
+      "inStock": true
+    },
+    {
+      "id": "HOT_SAUCE",
+      "name": "Hot Sauce",
+      "conflicts": [],
+      "category": "SAUCE",
+      "inStock": true
+    },
+    {
+      "id": "GARLIC_SAUCE",
+      "name": "Garlic Sauce",
+      "conflicts": [],
+      "category": "SAUCE",
+      "inStock": false
+    }
+  ],
+  "toppingCategories": [
+    {
+      "id": "BASE",
+      "name": "Base Sauce",
+      "mutuallyExclusive": true,
+      "order": 0
+    },
+    {
+      "id": "CHEESE",
+      "name": "Cheeses",
+      "mutuallyExclusive": false,
+      "order": 1
+    },
+    {
+      "id": "MEAT",
+      "name": "Meats",
+      "mutuallyExclusive": false,
+      "order": 2
+    },
+    {
+      "id": "VEG",
+      "name": "Vegetables",
+      "mutuallyExclusive": false,
+      "order": 3
+    },
+    {
+      "id": "SAUCE",
+      "name": "Topping Sauces",
+      "mutuallyExclusive": false,
+      "order": 4
+    }
+  ],
+  "presets": [
+    {
+      "id": "CUSTOM",
+      "name": "The Custom One",
+      "toppings": ["TOMATO_BASE"],
+      "image": "favicon.png",
+      "description": "Choose from a wide array of fresh toppings, sauces, and cheeses to create a personalized masterpiece tailored to your unique preferences."
+    },
+    {
+      "id": "CHEESE",
+      "name": "The Cheese One",
+      "toppings": ["TOMATO_BASE", "FRESH_MOZZARELLA", "GRATED_MOZZARELLA"],
+      "image": "classic-cheese.jpg",
+      "description": "Enjoy the simplicity of our classic cheese pizza, featuring a perfect blend of melted cheeses on a crispy crust, ensuring a comforting and satisfying experience."
+    },
+    {
+      "id": "PEPERONI",
+      "name": "The Peperoni One",
+      "toppings": ["FRESH_MOZZARELLA", "GRATED_MOZZARELLA", "PEPERONI"],
+      "image": "favicon.png",
+      "description": "A harmonious blend of thin and crispy crust, tangy tomato sauce infused with aromatic herbs, and a medley of perfectly melted cheeses that make up our delightful Peperoni pizza."
+    },
+    {
+      "id": "THE_RED_ONE",
+      "name": "The Red One",
+      "toppings": [
+        "TOMATO_BASE",
+        "GRATED_MOZZARELLA",
+        "FRESH_MOZZARELLA",
+        "CHERRY_TOMATOES",
+        "PEPERONI",
+        "CHORIZO",
+        "CHORIZO_CUBES",
+        "PEPPERS",
+        "CHILIES",
+        "ONIONS"
+      ],
+      "image": "favicon.png",
+      "description": "A flavor-packed adventure generously topped with anything and everything red (on the menu) creating a harmonious symphony of red hues."
+    }
+  ]
+}
