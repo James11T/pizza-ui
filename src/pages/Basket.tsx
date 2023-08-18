@@ -1,39 +1,77 @@
-import ActionButton from "../components/ActionButton";
 import PageTitle from "../components/PageTitle";
 import Pizza from "../components/Pizza";
-import Delete from "../components/icons/Delete";
-import Edit from "../components/icons/Edit";
-import Sad from "../components/icons/Sad";
-import PizzaIcon from "../components/icons/Pizza";
+import {
+  TrashIcon,
+  PencilIcon,
+  FaceFrownIcon,
+  BookOpenIcon,
+} from "@heroicons/react/24/outline";
 import { UsePizzaBasket } from "../hooks/usePizzaBasket";
-import { Link, useNavigate } from "react-router-dom";
 import { UsePizzaBuilder } from "../hooks/usePizzaBuilder";
 import cn from "clsx";
 import { toast } from "react-toastify";
+import useRoute from "../hooks/useRoute";
+import { arrayDiff } from "../array";
+import { presetIdMap, toppingIdMap } from "../data";
+import PizzaSrc from "../assets/pizza.svg";
 
 interface Props {
   basket: UsePizzaBasket;
   builder: UsePizzaBuilder;
 }
 
-const basketEmpty = (
-  <>
-    <Sad className="h-16 w-16 stroke-2" />
-    <div>
-      It looks like your basket is empty, take a look at our menu{" "}
-      <Link to="/" className="underline">
-        here
-      </Link>
-      .
-    </div>
-  </>
-);
+const basketItemButtonClasses =
+  "grid w-14 place-content-center shadow-lg [&>svg]:w-7 [&>svg]:opacity-50 hover:brightness-95 active:brightness-90";
 
 const bottomButtonClasses =
   "flex-grow rounded-md flex justify-center items-center text-lg [&>svg]:w-6 [&>svg]:h-6 gap-1 font-semibold disabled:grayscale disabled:opacity-50 disabled:cursor-not-allowed filter hover:brightness-95 active:brightness-90";
 
+interface ToppingDiffProps {
+  originalToppings: string[];
+  newToppings: string[];
+}
+
+const ToppingDiff = ({ originalToppings, newToppings }: ToppingDiffProps) => {
+  const [addedToppings, removedToppings] = arrayDiff(
+    originalToppings,
+    newToppings
+  );
+
+  if (addedToppings.length + removedToppings.length === 0) {
+    return <span className="text-gray-500">No alterations</span>;
+  }
+
+  return (
+    <ul>
+      {addedToppings.map((topping) => (
+        <li className="text-green-600" key={`add_${topping}`}>
+          + {toppingIdMap[topping].name}
+        </li>
+      ))}
+      {removedToppings.map((topping) => (
+        <li className="text-rose-700" key={`remove_${topping}`}>
+          - {toppingIdMap[topping].name}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 const BasketPage = ({ basket, builder }: Props) => {
-  const navigate = useNavigate();
+  const { navigate } = useRoute();
+
+  const basketEmpty = (
+    <>
+      <FaceFrownIcon className="h-16 w-16 stroke-2" />
+      <div>
+        It looks like your basket is empty, take a look at our menu{" "}
+        <button onClick={() => navigate("HOME")} className="underline">
+          here
+        </button>
+        .
+      </div>
+    </>
+  );
 
   const onEditPizza = (index: number) => {
     const preset = basket.contents[index];
@@ -41,13 +79,7 @@ const BasketPage = ({ basket, builder }: Props) => {
     builder.setPreset(preset);
     basket.remove(index);
 
-    navigate("/builder?edit");
-  };
-
-  const onBasketClear = () => {
-    basket.clear();
-    navigate("/");
-    toast("Cleared basket");
+    navigate("BUILDER"); // TODO MARK EDIT
   };
 
   const handleBasketRemove = (index: number) => {
@@ -57,34 +89,43 @@ const BasketPage = ({ basket, builder }: Props) => {
 
   return (
     <>
-      <div className="mx-auto flex h-auto max-w-[1200px] flex-col">
+      <div className="flex h-auto flex-col">
         <div className="flex-grow p-2 pb-20">
           <PageTitle>Basket</PageTitle>
           <ul className="flex flex-col gap-2">
             {basket.contents.map((pizza, index) => (
-              <li key={index}>
+              <li key={index} className="flex gap-2">
                 <Pizza
                   img={pizza.image}
-                  toppings={pizza.toppings}
                   title={pizza.name}
-                  allowGrowth={true}
-                  actions={
-                    <>
-                      <ActionButton
-                        icon={<Edit />}
-                        text="CHANGE"
-                        className="bg-gray-100"
-                        onClick={() => onEditPizza(index)}
-                      />
-                      <ActionButton
-                        icon={<Delete />}
-                        text="REMOVE"
-                        className="bg-remove"
-                        onClick={() => handleBasketRemove(index)}
-                      />
-                    </>
+                  className="w-full"
+                  description={
+                    <ToppingDiff
+                      originalToppings={presetIdMap[pizza.id].toppings}
+                      newToppings={pizza.toppings}
+                    />
                   }
                 />
+                <div className="flex flex-col pt-2 [&>*]:basis-full">
+                  <button
+                    className={cn(
+                      basketItemButtonClasses,
+                      "rounded-t-lg bg-indigo-300"
+                    )}
+                    onClick={() => onEditPizza(index)}
+                  >
+                    <PencilIcon />
+                  </button>
+                  <button
+                    className={cn(
+                      basketItemButtonClasses,
+                      "rounded-b-lg bg-rose-400"
+                    )}
+                    onClick={() => handleBasketRemove(index)}
+                  >
+                    <TrashIcon />
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
@@ -94,37 +135,36 @@ const BasketPage = ({ basket, builder }: Props) => {
             ) : (
               <div>
                 Got room for more? Go back to the menu{" "}
-                <Link to="/" className="underline">
+                <button onClick={() => navigate("HOME")} className="underline">
                   here
-                </Link>
+                </button>
                 .
               </div>
             )}
           </div>
         </div>
       </div>
-      <div className="fixed bottom-0 h-20 w-full border-t-[1px] bg-white p-2">
-        <div className="mx-auto ml-auto flex h-full max-w-[1200px] gap-2">
+      <div className="fixed bottom-0 h-20 w-full gap-2 border-t-[1px] bg-white p-2">
+        <div className="ml-auto flex h-full gap-2">
           <button
             className={cn(
               bottomButtonClasses,
-              "basis-1/3 bg-gray-100 text-gray-800"
+              "flex basis-1/3 items-center gap-2 bg-gray-200 text-gray-800"
             )}
-            disabled={basket.contents.length === 0}
-            onClick={onBasketClear}
+            onClick={() => navigate("HOME")}
           >
-            <Delete />
-            CANCEL
+            <BookOpenIcon />
+            <span>Menu</span>
           </button>
           <button
             className={cn(
               bottomButtonClasses,
-              "bg-confirm basis-2/3 text-lime-950"
+              "bg-confirm flex basis-2/3 items-center gap-2 text-lime-950"
             )}
             disabled={basket.contents.length === 0}
           >
-            <PizzaIcon className="" />
-            SUBMIT ORDER
+            <img src={PizzaSrc} className="h-6 w-6" />
+            <span>Submit Order</span>
           </button>
         </div>
       </div>

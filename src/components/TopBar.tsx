@@ -1,26 +1,24 @@
-import Basket from "./icons/Basket";
+import { BookOpenIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import pizza from "../assets/pizza.svg";
-import { Link } from "react-router-dom";
+import useRoute from "../hooks/useRoute";
 
-interface Props {
-  basketCount: number;
-}
+const TopBar = () => {
+  const { navigate } = useRoute();
 
-const TopBar = ({ basketCount }: Props) => {
   return (
-    <div className="fixed left-0 right-0 top-0 z-30 flex h-14 items-center bg-white px-3 py-2 shadow-md">
-      <Link className="flex flex-grow gap-1" to="/">
+    <div className="fixed left-1/2 top-0 z-30 flex h-14 w-full max-w-[1000px] -translate-x-1/2 items-center gap-2 bg-gray-100 px-3 py-2">
+      <button className="flex flex-grow gap-1" onClick={() => navigate("HOME")}>
         <img src={pizza} alt="pizza logo" className="h-9 w-9" />
         <div className="font-raleway font-se flex flex-col justify-center whitespace-nowrap text-2xl">
           {import.meta.env.VITE_BRAND_NAME}
         </div>
-      </Link>
-      <Link className="relative" to="/basket">
-        <Basket className="h-9 w-9 text-stone-700" />
-        <span className="font-raleway absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[4px] text-xs font-bold">
-          {basketCount}
-        </span>
-      </Link>
+      </button>
+      <button onClick={() => navigate("HOME")}>
+        <BookOpenIcon className="h-8 w-8 text-stone-700" />
+      </button>
+      <button onClick={() => navigate("BASKET")}>
+        <ShoppingCartIcon className="h-8 w-8 text-stone-700" />
+      </button>
     </div>
   );
 };

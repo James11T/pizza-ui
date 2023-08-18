@@ -1,38 +1,43 @@
 import TopBar from "./TopBar";
 import usePizzaBuilder from "../hooks/usePizzaBuilder";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/Home";
 import BuilderPage from "../pages/Builder";
 import usePizzaBasket from "../hooks/usePizzaBasket";
 import BasketPage from "../pages/Basket";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import cn from "clsx";
+import useRoute from "../hooks/useRoute";
 
 const App = () => {
   const builder = usePizzaBuilder();
   const basket = usePizzaBasket();
 
+  const { emblaRef } = useRoute();
+
   return (
-    <BrowserRouter>
-      <TopBar basketCount={basket.contents.length} />
-      <div className="mx-auto h-auto pt-14">
-        <Routes>
-          <Route
-            index
-            element={<HomePage builder={builder} basket={basket} />}
-          />
-          <Route
-            path="builder"
-            element={<BuilderPage builder={builder} basket={basket} />}
-          />
-          <Route
-            path="basket"
-            element={<BasketPage builder={builder} basket={basket} />}
-          />
-        </Routes>
+    <>
+      <TopBar />
+      <div className="mx-auto max-w-[1000px] overflow-hidden" ref={emblaRef}>
+        <div className="flex">
+          <div className={cn("embla__slide", "mx-auto h-auto max-w-[1000px]")}>
+            <HomePage builder={builder} />
+          </div>
+          <div className={cn("embla__slide", "mx-auto h-auto max-w-[1000px]")}>
+            <BuilderPage builder={builder} basket={basket} />
+          </div>
+          <div className={cn("embla__slide", "mx-auto h-auto max-w-[1000px]")}>
+            <BasketPage builder={builder} basket={basket} />
+          </div>
+        </div>
       </div>
-      <ToastContainer position="top-center" hideProgressBar autoClose={3000} />
-    </BrowserRouter>
+      <ToastContainer
+        position="top-center"
+        hideProgressBar
+        autoClose={2000}
+        closeOnClick
+      />
+    </>
   );
 };
 

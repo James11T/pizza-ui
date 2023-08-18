@@ -17,6 +17,9 @@ export default {
         remove: "#fda4af",
         muted: "#a8a29e",
       },
+      screens: {
+        xs: "450px",
+      },
     },
   },
   plugins: [],

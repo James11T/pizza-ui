@@ -8,13 +8,28 @@ interface UsePizzaBasket {
   clear: () => void;
 }
 
+const save = (data: UsePizzaBasket["contents"]) =>
+  localStorage.setItem("basket", JSON.stringify(data));
+
 const usePizzaBasket = (): UsePizzaBasket => {
   const [contents, setContents] = React.useState<UsePizzaBasket["contents"]>(
     []
   );
 
+  React.useEffect(() => {
+    const persistentRaw = localStorage.getItem("basket");
+    if (!persistentRaw) return;
+    const data = JSON.parse(persistentRaw);
+    setContents(data);
+  }, []);
+
   const add = React.useCallback(
-    (preset: ToppingPreset) => setContents((old) => [...old, preset]),
+    (preset: ToppingPreset) =>
+      setContents((old) => {
+        const newData = [...old, preset];
+        save(newData);
+        return newData;
+      }),
     []
   );
 
@@ -23,12 +38,16 @@ const usePizzaBasket = (): UsePizzaBasket => {
       setContents((old) => {
         const newArr = [...old];
         newArr.splice(index, 1);
+        save(newArr);
         return newArr;
       }),
     []
   );
 
-  const clear = React.useCallback(() => setContents([]), []);
+  const clear = React.useCallback(() => {
+    setContents([]);
+    save([]);
+  }, []);
 
   return { contents, add, remove, clear };
 };

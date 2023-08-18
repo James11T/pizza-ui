@@ -1,7 +1,6 @@
 import { categoryToppingsMap, categoryIdNameMap, categoryIdMap } from "../data";
 import cn from "clsx";
-import Plus from "./icons/Plus";
-import Minus from "./icons/Minus";
+import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
 
 interface PizzaBuilderProps {
   selectedToppings?: string[];
@@ -48,9 +47,9 @@ const PizzaBuilder = ({
                   ></div>
                   {topping.name}
                   {selectedToppings.includes(topping.id) ? (
-                    <Minus className="h-5 w-5" />
+                    <MinusIcon className="h-5 w-5" />
                   ) : (
-                    <Plus className="h-5 w-5" />
+                    <PlusIcon className="h-5 w-5" />
                   )}
                 </button>
               </li>

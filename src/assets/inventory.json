@@ -36,8 +36,8 @@
       "inStock": true
     },
     {
-      "id": "PEPERONI",
-      "name": "Peperoni",
+      "id": "PEPPERONI",
+      "name": "Pepperoni",
       "conflicts": [],
       "category": "MEAT",
       "inStock": true
@@ -231,11 +231,11 @@
       "description": "Enjoy the simplicity of our classic cheese pizza, featuring a perfect blend of melted cheeses on a crispy crust, ensuring a comforting and satisfying experience."
     },
     {
-      "id": "PEPERONI",
-      "name": "The Peperoni One",
-      "toppings": ["FRESH_MOZZARELLA", "GRATED_MOZZARELLA", "PEPERONI"],
-      "image": "favicon.png",
-      "description": "A harmonious blend of thin and crispy crust, tangy tomato sauce infused with aromatic herbs, and a medley of perfectly melted cheeses that make up our delightful Peperoni pizza."
+      "id": "PEPPERONI",
+      "name": "The Pepperoni One",
+      "toppings": ["FRESH_MOZZARELLA", "GRATED_MOZZARELLA", "PEPPERONI"],
+      "image": "classic-cheese.jpg",
+      "description": "A harmonious blend of thin and crispy crust, tangy tomato sauce infused with aromatic herbs, and a medley of perfectly melted cheeses that make up our delightful Pepperoni pizza."
     },
     {
       "id": "THE_RED_ONE",
@@ -245,14 +245,14 @@
         "GRATED_MOZZARELLA",
         "FRESH_MOZZARELLA",
         "CHERRY_TOMATOES",
-        "PEPERONI",
+        "PEPPERONI",
         "CHORIZO",
         "CHORIZO_CUBES",
         "PEPPERS",
         "CHILIES",
         "ONIONS"
       ],
-      "image": "favicon.png",
+      "image": "classic-cheese.jpg",
       "description": "A flavor-packed adventure generously topped with anything and everything red (on the menu) creating a harmonious symphony of red hues."
     }
   ]
