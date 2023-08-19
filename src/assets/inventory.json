@@ -120,6 +120,13 @@
       "inStock": true
     },
     {
+      "id": "JALAPENOS",
+      "name": "Jalapenos",
+      "conflicts": [],
+      "category": "VEG",
+      "inStock": true
+    },
+    {
       "id": "ONIONS",
       "name": "Red Onions",
       "conflicts": [],
@@ -295,6 +302,130 @@
       ],
       "image": "classic-cheese.jpg",
       "description": "A flavor-packed adventure generously topped with anything and everything red (on the menu) creating a harmonious symphony of red hues."
+    },
+    {
+      "id": "THE_HOT_ONE",
+      "name": "The Hot One",
+      "toppings": [
+        "TOMATO_BASE",
+        "CHEDDAR",
+        "GRATED_MOZZARELLA",
+        "MEXICAN_CHEESE",
+        "CHORIZO",
+        "BEEF",
+        "CHILIES",
+        "ONIONS",
+        "CHILLI_OIL"
+      ],
+      "image": "classic-cheese.jpg",
+      "description": "A fiery ensemble of tomato base, cheddar, mozzarella, chorizo, beef, chilies, onions, and a dash of chili oil for a bold and spicy kick."
+    },
+    {
+      "id": "THE_MEDITERRANEAN_ONE",
+      "name": "The Mediterranean One",
+      "toppings": [
+        "TOMATO_BASE",
+        "FRESH_MOZZARELLA",
+        "CHERRY_TOMATOES",
+        "ONIONS",
+        "PEPPERS",
+        "ROCKET",
+        "BASIL"
+      ],
+      "image": "classic-cheese.jpg",
+      "description": "The Mediterranean delight: Tomato base, Fresh Mozzarella, Cherry Tomatoes, Onions, Peppers, Rocket, and Basil come together in a symphony of flavors."
+    },
+    {
+      "id": "THE_MEATY_ONE",
+      "name": "The Meaty One",
+      "toppings": [
+        "TOMATO_BASE",
+        "PEPPERONI",
+        "PARMA_HAM",
+        "CHICKEN",
+        "BACON",
+        "ONIONS"
+      ],
+      "image": "classic-cheese.jpg",
+      "description": "A carnivore's dream featuring a rich Tomato base, loaded with Pepperoni, Parma Ham, Chicken, Bacon, and Onions for an indulgent feast of savory delights."
+    },
+    {
+      "id": "THE_PIG",
+      "name": "The Pig (One)",
+      "toppings": [
+        "TOMATO_BASE",
+        "CHORIZO",
+        "HAM",
+        "PARMA_HAM",
+        "BACON",
+        "MUSHROOMS",
+        "GARLIC_OIL"
+      ],
+      "image": "classic-cheese.jpg",
+      "description": " A tomato base bursting with flavor, topped with chorizo, ham, bacon, mushrooms, and a drizzle of garlic oil, creating a symphony of porky perfection with a touch of earthy indulgence."
+    },
+    {
+      "id": "THE_SHIT_ONE",
+      "name": "The Shit One",
+      "toppings": [
+        "TOMATO_BASE",
+        "CHEDDAR",
+        "FRESH_MOZZARELLA",
+        "HAM",
+        "PINEAPPLE",
+        "ONIONS"
+      ],
+      "image": "classic-cheese.jpg",
+      "description": "A crime against Pizza."
+    },
+    {
+      "id": "THE_BBQ_ONE",
+      "name": "The BBQ One",
+      "toppings": [
+        "BBQ_BASE",
+        "GRATED_MOZZARELLA",
+        "FRESH_MOZZARELLA",
+        "PEPPERONI",
+        "CHICKEN",
+        "BEEF",
+        "PEPPERS",
+        "CHILIES",
+        "ONIONS",
+        "JALAPENOS"
+      ],
+      "image": "classic-cheese.jpg",
+      "description": " A smoky BBQ base layered with grated and fresh mozzarella, piled high with pepperoni, chicken, beef, peppers, chilies, onions, and jalapenos, delivering a fiery, tangy, and meaty fiesta of flavors."
+    },
+    {
+      "id": "WILLS_SPECIAL_ONE",
+      "name": "Will's Special One",
+      "toppings": [
+        "BBQ_BASE",
+        "FRESH_MOZZARELLA",
+        "GRATED_MOZZARELLA",
+        "SMOKED_CHEESE",
+        "PEPPERONI",
+        "CHICKEN",
+        "PEPPERS",
+        "ONIONS",
+        "JALAPENOS"
+      ],
+      "image": "classic-cheese.jpg",
+      "description": "A masterpiece with a BBQ base, dual mozzarella bliss, smoked cheese, pepperoni, chicken, peppers, onions, and jalapenos, crafting a harmonious medley of smoky, spicy, and cheesy perfection."
+    },
+    {
+      "id": "THE_POSH_ONE",
+      "name": "The Posh One",
+      "toppings": [
+        "TOMATO_BASE",
+        "FRESH_MOZZARELLA",
+        "PARMA_HAM",
+        "ROCKET",
+        "BASIL",
+        "CHERRY_TOMATOES"
+      ],
+      "image": "classic-cheese.jpg",
+      "description": "An elegant tomato base topped with fresh mozzarella, delicate parma ham, peppery rocket, fragrant basil, and bursts of cherry tomatoes, offering a refined symphony of flavors in every bite."
     }
   ]
 }
