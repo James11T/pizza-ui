@@ -11,13 +11,15 @@ import { UsePizzaBuilder } from "../hooks/usePizzaBuilder";
 import cn from "clsx";
 import { toast } from "react-toastify";
 import useRoute from "../hooks/useRoute";
-import { arrayDiff } from "../array";
-import { presetIdMap, toppingIdMap } from "../data";
+import { presetIdMap } from "../data";
 import PizzaSrc from "../assets/pizza.svg";
+import { Order } from "../types";
+import ToppingDiff from "../components/ToppingDiff";
 
 interface Props {
   basket: UsePizzaBasket;
   builder: UsePizzaBuilder;
+  onSubmit: (order: Omit<Order, "uuid" | "status">) => void;
 }
 
 const basketItemButtonClasses =
@@ -26,38 +28,7 @@ const basketItemButtonClasses =
 const bottomButtonClasses =
   "flex-grow rounded-md flex justify-center items-center text-lg [&>svg]:w-6 [&>svg]:h-6 gap-1 font-semibold disabled:grayscale disabled:opacity-50 disabled:cursor-not-allowed filter hover:brightness-95 active:brightness-90";
 
-interface ToppingDiffProps {
-  originalToppings: string[];
-  newToppings: string[];
-}
-
-const ToppingDiff = ({ originalToppings, newToppings }: ToppingDiffProps) => {
-  const [addedToppings, removedToppings] = arrayDiff(
-    originalToppings,
-    newToppings
-  );
-
-  if (addedToppings.length + removedToppings.length === 0) {
-    return <span className="text-gray-500">No alterations</span>;
-  }
-
-  return (
-    <ul>
-      {addedToppings.map((topping) => (
-        <li className="text-green-600" key={`add_${topping}`}>
-          + {toppingIdMap[topping].name}
-        </li>
-      ))}
-      {removedToppings.map((topping) => (
-        <li className="text-rose-700" key={`remove_${topping}`}>
-          - {toppingIdMap[topping].name}
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-const BasketPage = ({ basket, builder }: Props) => {
+const BasketPage = ({ basket, builder, onSubmit }: Props) => {
   const { navigate } = useRoute();
 
   const basketEmpty = (
@@ -79,12 +50,22 @@ const BasketPage = ({ basket, builder }: Props) => {
     builder.setPreset(preset);
     basket.remove(index);
 
-    navigate("BUILDER"); // TODO MARK EDIT
+    navigate("BUILDER");
   };
 
   const handleBasketRemove = (index: number) => {
     basket.remove(index);
     toast("Removed from basket");
+  };
+
+  const handleOrderSubmit = () => {
+    basket.clear();
+    onSubmit({
+      pizzas: basket.contents.map((content) => ({
+        preset_id: content.id,
+        toppings: content.toppings,
+      })),
+    });
   };
 
   return (
@@ -162,6 +143,7 @@ const BasketPage = ({ basket, builder }: Props) => {
               "bg-confirm flex basis-2/3 items-center gap-2 text-lime-950"
             )}
             disabled={basket.contents.length === 0}
+            onClick={handleOrderSubmit}
           >
             <img src={PizzaSrc} className="h-6 w-6" />
             <span>Submit Order</span>

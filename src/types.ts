@@ -27,12 +27,28 @@ interface ToppingPreset {
   description: string;
 }
 
+const ORDER_STATUSES = ["WAITING", "PREPARING", "COOKING", "DONE"] as const;
+
+type OrderStatus = (typeof ORDER_STATUSES)[number];
+
+interface Order {
+  uuid: string;
+  status: OrderStatus;
+  pizzas: {
+    preset_id: string;
+    toppings: string[];
+  }[];
+}
+
 type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 
+export { ORDER_STATUSES };
 export type {
   Topping,
   ToppingCategory,
   ToppingPreset,
   InventoryConfig,
   Optional,
+  Order,
+  OrderStatus,
 };

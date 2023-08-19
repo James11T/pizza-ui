@@ -1,7 +1,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import React from "react";
 
-const pages = ["HOME", "BUILDER", "BASKET"] as const;
+const pages = ["HOME", "BUILDER", "BASKET", "ORDER"] as const;
 type Page = (typeof pages)[number];
 
 interface RouteContext {
