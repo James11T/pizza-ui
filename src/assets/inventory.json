@@ -36,6 +36,20 @@
       "inStock": true
     },
     {
+      "id": "SMOKED_CHEESE",
+      "name": "Smoked Cheese",
+      "conflicts": [],
+      "category": "CHEESE",
+      "inStock": true
+    },
+    {
+      "id": "MEXICAN_CHEESE",
+      "name": "Mexican Cheese",
+      "conflicts": [],
+      "category": "CHEESE",
+      "inStock": true
+    },
+    {
       "id": "PEPPERONI",
       "name": "Pepperoni",
       "conflicts": [],
@@ -54,7 +68,7 @@
       "name": "Chorizo Cubes",
       "conflicts": [],
       "category": "MEAT",
-      "inStock": true
+      "inStock": false
     },
     {
       "id": "HAM",
@@ -64,11 +78,18 @@
       "inStock": true
     },
     {
+      "id": "PARMA_HAM",
+      "name": "Parma Ham",
+      "conflicts": [],
+      "category": "MEAT",
+      "inStock": true
+    },
+    {
       "id": "CHICKEN",
       "name": "Chicken",
       "conflicts": [],
       "category": "MEAT",
-      "inStock": false
+      "inStock": true
     },
     {
       "id": "BACON",
@@ -82,7 +103,7 @@
       "name": "Spicy Beef",
       "conflicts": [],
       "category": "MEAT",
-      "inStock": false
+      "inStock": true
     },
     {
       "id": "PEPPERS",
@@ -110,14 +131,14 @@
       "name": "Pineapple",
       "conflicts": [],
       "category": "VEG",
-      "inStock": false
+      "inStock": true
     },
     {
       "id": "MUSHROOMS",
       "name": "Mushrooms",
       "conflicts": [],
       "category": "VEG",
-      "inStock": false
+      "inStock": true
     },
     {
       "id": "GARLIC",
@@ -138,7 +159,7 @@
       "name": "Cherry Tomatoes",
       "conflicts": [],
       "category": "VEG",
-      "inStock": false
+      "inStock": true
     },
     {
       "id": "ROCKET",
@@ -166,7 +187,7 @@
       "name": "Burger Sauce",
       "conflicts": [],
       "category": "SAUCE",
-      "inStock": true
+      "inStock": false
     },
     {
       "id": "HOT_SAUCE",
@@ -181,6 +202,20 @@
       "conflicts": [],
       "category": "SAUCE",
       "inStock": false
+    },
+    {
+      "id": "GARLIC_OIL",
+      "name": "Garlic Oil",
+      "conflicts": [],
+      "category": "OIL",
+      "inStock": true
+    },
+    {
+      "id": "CHILLI_OIL",
+      "name": "Chilli Oil",
+      "conflicts": [],
+      "category": "OIL",
+      "inStock": true
     }
   ],
   "toppingCategories": [
@@ -213,6 +248,12 @@
       "name": "Topping Sauces",
       "mutuallyExclusive": false,
       "order": 4
+    },
+    {
+      "id": "OIL",
+      "name": "Oil",
+      "mutuallyExclusive": false,
+      "order": 5
     }
   ],
   "presets": [
